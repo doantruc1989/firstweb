@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/stylerlog.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/post" method="post">
+            <div class="header">
+                <h3>TẠO MỚI CHỦ ĐỀ</h3>
+            </div>
+            <div class="inputs">
+                <textarea name="title" id="title" cols="50" rows="3" placeholder="title"></textarea>
+                <textarea name="path" id="path" cols="50" rows="3" placeholder="image path"></textarea>
+                <textarea name="contentText" id="inputContent" cols="50" rows="3"
+                    placeholder="small content"></textarea>
+                <textarea name="contentTextFull" id="inputContent" placeholder="contentFull" cols="50"
+                    rows="10"></textarea><br>
+                <select name="cateID">
+                    <option value="1">THỜI TIẾT</option>
+                    <option value="2">QUỐC TẾ</option>
+                    <option value="3">THỂ THAO</option>
+                    <option value="4">THỜI SỰ</option>
+                </select>
+
+            </div>
+            <div id="button">
+                <input id="button-item" type="submit" class="newThread" value="postThread" name="postnewThread">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
