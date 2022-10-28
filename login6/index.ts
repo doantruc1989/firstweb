@@ -8,6 +8,10 @@ import "reflect-metadata";
 import * as path from 'path';
 import { engine } from 'express-handlebars';
 import cookieParser from "cookie-parser";
+import bcrypt = require("bcrypt");
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));

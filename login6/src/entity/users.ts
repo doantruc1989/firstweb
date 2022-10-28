@@ -7,13 +7,15 @@ export class users {
 
     @Column({
         unique: true
-})
+    })
     "username": string
-    
 
     @Column()
     "password": string
 
     @Column()
     "avatar": string
+
+    @Column()
+    "role": string
 };

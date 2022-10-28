@@ -109,66 +109,9 @@ export async function getCategory(
   const page = parseInt(req.query.page as any) || 1;
   const perPage = 5;
   const total = await myDataSource.getRepository(post).createQueryBuilder().getCount();
-  const x = await myDataSource.getRepository(post).createQueryBuilder().take(perPage).skip((page - 1) * perPage).getMany();
-  res.send({
-    data: x,
-    total,
-    page,
-    last_page: Math.ceil(total / perPage)
-  })
-  console.log(req.query.page)
-  // console.log(req.params)
-  // console.log(req.query)
-  // console.log()
-  // const user = await myDataSource.getRepository(post).createQueryBuilder().take(5).skip(0).getMany();
-  // res.render("category", { post: user });
-  // const x = await myDataSource.getRepository(post).createQueryBuilder().getMany();
-  // const resultPerPage = 5,
-  //   numberOfResults = x.length,
-  //   numberOfPages = Math.ceil(numberOfResults / resultPerPage);
-  // let page = req.query.page ? Number(req.query.page) : 1;
-  // if (page > numberOfPages) {
-  //   res.send('/?page=' + encodeURIComponent(numberOfPages));
-  // } else if (page < 1) {
-  //   res.send('/?page=' + encodeURIComponent('1'));
-  // }
-  // const startingLimit = (page - 1) * resultPerPage;
-  // const user = await myDataSource.getRepository(post).createQueryBuilder().take(resultPerPage).skip(startingLimit).getMany();
-  // let iterator = (page - 5) < 1 ? 1 : page - 5;
-  // let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages)
-  // if (endingLink < (page + 4)) {
-  //   iterator -= (page + 4) - numberOfPages
-  // }
-  // res.render("category", { post: user });
+  const user = await myDataSource.getRepository(post).createQueryBuilder().take(perPage).skip((page - 1) * perPage).getMany();
+  res.render("category", { post: user });
 }
-
-
-
-
-
-// if (!req.cookies.username) {
-//   res.redirect("/login");
-// }
-
-//   const x = await myDataSource.getRepository(post).createQueryBuilder().getMany();
-//   const resultPerPage = 5,
-//     numberOfResults = x.length,
-//     numberOfPages = Math.ceil(numberOfResults / resultPerPage);
-//   let page = req.query.page ? Number(req.query.page) : 1;
-//   if (page > numberOfPages) {
-//     res.send('/?page=' + encodeURIComponent(numberOfPages));
-//   } else if (page < 1) {
-//     res.send('/?page=' + encodeURIComponent('1'));
-//   }
-//   const startingLimit = (page -1) * resultPerPage;
-//   const user = await myDataSource.getRepository(post).createQueryBuilder().take(resultPerPage).skip(startingLimit).getMany();
-//   let iterator = (page -5) <1 ?1 :page -5;
-//   let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) :page + (numberOfPages)
-// if(endingLink < (page + 4)) {
-//   iterator -= (page +4) - numberOfPages
-// }
-//   res.render("category", { post: user });
-
 
 export function postPage(req: Request, res: Response, next: NextFunction) {
   var options = {
