@@ -42,7 +42,7 @@ router.get('/category/thethao', getCategoryTT)
 router.get('/category/quocte', getCategoryQT)
 router.get('/category/thoisu', getCategoryTS)
 router.get('/category/thoitiet', getCategoryTTiet)
-router.get('/category', getCategory)
+router.get('/category/:page', getCategory)
 router.get('/category/post/:id', toCategory);
 
 router.get('/pos', postPage);

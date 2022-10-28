@@ -1,5 +1,4 @@
 import { DataSource, DataSourceOptions } from "typeorm"
-import * as mysql from 'mysql'
 
 export const myDataSource = new DataSource({
     type: "mysql",
@@ -12,10 +11,3 @@ export const myDataSource = new DataSource({
     // logging: true,
     synchronize: true,
 })
-
-export const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'db3'
-});

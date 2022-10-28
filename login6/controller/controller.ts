@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { myDataSource, connection } from "../src/connect";
+import { myDataSource } from "../src/connect";
 import { users } from "../src/entity/users";
 import { post } from "../src/entity/post";
 import { category } from "../src/entity/category";
@@ -24,27 +24,22 @@ export function getLogin(req: Request, res: Response, next: NextFunction) {
   res.sendFile(fileName, options);
 }
 
-export function postLogin(req: Request, res: Response, next: NextFunction) {
-  var username = req.body.username;
-  var password = req.body.password;
-  var rememberMe = req.body.rememberMe;
-  if (username && password) {
-    connection.query(
-      "SELECT * FROM users WHERE username = ? AND password = ?",
-      [username, password],
-      function (error, results, fields) {
-        res.cookie("username", username, {
-          maxAge: rememberMe ? 2592000000 : undefined,
-        });
-        res.redirect("/profile");
-      }
-    );
+export async function postLogin(req: Request, res: Response, next: NextFunction) {
+
+  const username = req.body.username,
+    password = req.body.password,
+    rememberMe = req.body.rememberMe;
+  const data = await myDataSource.getRepository('users').find({
+    where: { username: username, password: password }
+  });
+  if (data[0] == undefined) {
+    res.render('post2')
   } else {
-    res.send(
-      "Incorrect Username and/or Password! <br><a href='http://127.0.0.1:3000'>back to homepage</a>"
-    );
+    res.cookie("username", username, {
+      maxAge: rememberMe ? 2592000000 : undefined,
+    })
+    res.render('post');
   }
-  connection.end();
 }
 
 export function getRegister(req: Request, res: Response, next: NextFunction) {
@@ -111,12 +106,69 @@ export async function getCategory(
   res: Response,
   next: NextFunction
 ) {
-  if (!req.cookies.username) {
-    res.redirect("/login");
-  }
-  const user = await myDataSource.getRepository(post).find();
-  res.render("category", { post: user });
+  const page = parseInt(req.query.page as any) || 1;
+  const perPage = 5;
+  const total = await myDataSource.getRepository(post).createQueryBuilder().getCount();
+  const x = await myDataSource.getRepository(post).createQueryBuilder().take(perPage).skip((page - 1) * perPage).getMany();
+  res.send({
+    data: x,
+    total,
+    page,
+    last_page: Math.ceil(total / perPage)
+  })
+  console.log(req.query.page)
+  // console.log(req.params)
+  // console.log(req.query)
+  // console.log()
+  // const user = await myDataSource.getRepository(post).createQueryBuilder().take(5).skip(0).getMany();
+  // res.render("category", { post: user });
+  // const x = await myDataSource.getRepository(post).createQueryBuilder().getMany();
+  // const resultPerPage = 5,
+  //   numberOfResults = x.length,
+  //   numberOfPages = Math.ceil(numberOfResults / resultPerPage);
+  // let page = req.query.page ? Number(req.query.page) : 1;
+  // if (page > numberOfPages) {
+  //   res.send('/?page=' + encodeURIComponent(numberOfPages));
+  // } else if (page < 1) {
+  //   res.send('/?page=' + encodeURIComponent('1'));
+  // }
+  // const startingLimit = (page - 1) * resultPerPage;
+  // const user = await myDataSource.getRepository(post).createQueryBuilder().take(resultPerPage).skip(startingLimit).getMany();
+  // let iterator = (page - 5) < 1 ? 1 : page - 5;
+  // let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages)
+  // if (endingLink < (page + 4)) {
+  //   iterator -= (page + 4) - numberOfPages
+  // }
+  // res.render("category", { post: user });
 }
+
+
+
+
+
+// if (!req.cookies.username) {
+//   res.redirect("/login");
+// }
+
+//   const x = await myDataSource.getRepository(post).createQueryBuilder().getMany();
+//   const resultPerPage = 5,
+//     numberOfResults = x.length,
+//     numberOfPages = Math.ceil(numberOfResults / resultPerPage);
+//   let page = req.query.page ? Number(req.query.page) : 1;
+//   if (page > numberOfPages) {
+//     res.send('/?page=' + encodeURIComponent(numberOfPages));
+//   } else if (page < 1) {
+//     res.send('/?page=' + encodeURIComponent('1'));
+//   }
+//   const startingLimit = (page -1) * resultPerPage;
+//   const user = await myDataSource.getRepository(post).createQueryBuilder().take(resultPerPage).skip(startingLimit).getMany();
+//   let iterator = (page -5) <1 ?1 :page -5;
+//   let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) :page + (numberOfPages)
+// if(endingLink < (page + 4)) {
+//   iterator -= (page +4) - numberOfPages
+// }
+//   res.render("category", { post: user });
+
 
 export function postPage(req: Request, res: Response, next: NextFunction) {
   var options = {
@@ -131,7 +183,6 @@ export async function postCategory(
   res: Response,
   next: NextFunction
 ) {
-  console.log(req.body)
   let title = req.body.title,
     image = req.body.path,
     contentText = req.body.contentText,
