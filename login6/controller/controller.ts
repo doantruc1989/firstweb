@@ -3,9 +3,11 @@ import { myDataSource } from "../src/connect";
 import { users } from "../src/entity/users";
 import { post } from "../src/entity/post";
 import { category } from "../src/entity/category";
+import { comment } from "../src/entity/comment";
 import "reflect-metadata";
 import * as path from "path";
-
+import bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 myDataSource
   .initialize()
@@ -20,26 +22,71 @@ export function getLogin(req: Request, res: Response, next: NextFunction) {
   var options = {
     root: path.join(__dirname),
   };
-  var fileName = "/html/login.html";
+  var fileName = "./html/login.html";
   res.sendFile(fileName, options);
 }
 
-export async function postLogin(req: Request, res: Response, next: NextFunction) {
-
+export async function postLogin(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const username = req.body.username,
     password = req.body.password,
     rememberMe = req.body.rememberMe;
-  const data = await myDataSource.getRepository('users').find({
-    where: { username: username, password: password }
+
+  const data = await myDataSource.getRepository("users").find({
+    where: { username: username },
   });
   if (data[0] == undefined) {
-    res.render('post2')
+    res.render("post2");
   } else {
-    res.cookie("username", username, {
-      maxAge: rememberMe ? 2592000000 : undefined,
-    })
-    res.render('post');
+    bcrypt.compare(password, data[0].password, function (err, result) {
+      if (result == true) {
+        res.cookie("username", username, {
+          maxAge: rememberMe ? 2592000000 : undefined,
+        });
+        res.render("post");
+      } else {
+        res.render("post2")
+      }
+    });
   }
+}
+
+export async function getAdminpage(req: Request, res: Response, next: NextFunction) {
+const data = await myDataSource.getRepository("users").find({
+  where: { username: req.cookies.username },
+});
+if (data[0] == undefined) {
+  res.render("post2");
+} else {
+  if (data[0].role == "admin") {
+    var options = {
+      root: path.join(__dirname),
+    };
+    var fileName = "/html/admin.html";
+    res.sendFile(fileName, options);
+  } else {
+    res.render("post2")
+  }
+}
+}
+
+export async function getAdminUser(req: Request, res: Response, next: NextFunction) {
+  const data = await myDataSource.getRepository("users").find()
+  res.render('adminUser', {
+    user: data
+  })
+}
+
+
+
+export async function getAdminPost(req: Request, res: Response, next: NextFunction) {
+  const data = await myDataSource.getRepository("post").find()
+  res.render('adminPost', {
+    post: data
+  })
 }
 
 export function getRegister(req: Request, res: Response, next: NextFunction) {
@@ -51,18 +98,25 @@ export function getRegister(req: Request, res: Response, next: NextFunction) {
   res.sendFile(fileName, options);
 }
 
-export async function createRegister(
+export function createRegister(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const newUser = {
-    password: req.body.psw,
-    username: req.body.Username,
-    avatar: "1666357278165.png",
-  };
-  const user = await myDataSource.getRepository(users).save(newUser);
-  res.render('post')
+  let encryptPsw = "";
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    bcrypt.hash(req.body.psw, salt, function (err, hash) {
+      encryptPsw = hash;
+      console.log("hash", hash);
+      const newUser = {
+        password: hash,
+        username: req.body.Username,
+        avatar: "1666357278165.png",
+      };
+      myDataSource.getRepository(users).save(newUser);
+      res.render("post");
+    });
+  });
 }
 
 export async function getProfile(
@@ -108,8 +162,16 @@ export async function getCategory(
 ) {
   const page = parseInt(req.query.page as any) || 1;
   const perPage = 5;
-  const total = await myDataSource.getRepository(post).createQueryBuilder().getCount();
-  const user = await myDataSource.getRepository(post).createQueryBuilder().take(perPage).skip((page - 1) * perPage).getMany();
+  const total = await myDataSource
+    .getRepository(post)
+    .createQueryBuilder()
+    .getCount();
+  const user = await myDataSource
+    .getRepository(post)
+    .createQueryBuilder()
+    .take(perPage)
+    .skip((page - 1) * perPage)
+    .getMany();
   res.render("category", { post: user });
 }
 
@@ -137,10 +199,10 @@ export async function postCategory(
     content: contentText,
     contentFull: contentTextFull,
     username: req.cookies.username,
-    categoriesId: categoryId
+    categoriesId: categoryId,
   };
   await myDataSource.getRepository("post").save(newPost);
-  res.render('post')
+  res.render("post");
 }
 
 export async function getCategoryTT(
@@ -219,29 +281,64 @@ export async function toCategory(
   const post = await myDataSource.getRepository("post").find({
     where: { id: req.params.id },
   });
+  const comment = await myDataSource.getRepository("comment").find({
+    where: { postId: req.params.id },
+  });
   res.render("categoryDetail", {
+    post, comment
+  });
+}
+
+export async function postComment(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  let newComment = {
+    content: req.body.commentContent,
+    postId: req.body.commentbtn,
+    username: req.cookies.username,
+  };
+  await myDataSource.getRepository("comment").save(newComment);
+  const comment = myDataSource.getRepository("comment").find({
+    where: { id: req.body.commentbtn }
+  })
+  const post = await myDataSource.getRepository("post").find({
+    where: { id: req.body.commentbtn }});
+    res.render("categoryDetail", {
+      post, comment
+    });
+}
+
+export async function getHome(req: Request, res: Response, next: NextFunction) {
+  const data = await myDataSource
+    .getRepository(post)
+    .createQueryBuilder()
+    .orderBy("RAND()")
+    .getMany();
+  res.render("home", {
+    data: data,
+  });
+}
+
+export async function editPost(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const post = await myDataSource.getRepository("post").find({
+    where: { id: req.body.edit },
+  });
+  res.render("editCategory", {
     post: post,
   });
 }
 
-export async function getHome(req: Request, res: Response, next: NextFunction) {
-  const data = await myDataSource.getRepository(post).createQueryBuilder().orderBy("RAND()")
-    .getMany();
-  res.render("home", {
-    data: data,
-  })
-}
-
-export async function editPost(req: Request, res: Response, next: NextFunction) {
-  const post = await myDataSource.getRepository("post").find({
-    where: { id: req.body.edit }
-  })
-  res.render('editCategory', {
-    post: post
-  })
-}
-
-export async function updatePost(req: Request, res: Response, next: NextFunction) {
+export async function updatePost(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   let title = req.body.title,
     image = req.body.path,
     contentText = req.body.contentText,
@@ -263,7 +360,7 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
       })
       .where("id = :id", { id: updateP })
       .execute();
-    res.render('post')
+    res.render("post");
   }
   if (req.body.delPost) {
     await myDataSource
@@ -271,11 +368,10 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
       .delete()
       .from(post)
       .where({ id: delP })
-      .execute()
-    res.render('post')
+      .execute();
+    res.render("post");
   }
 }
-
 
 // class PostService {
 //   getPostById(id: string);

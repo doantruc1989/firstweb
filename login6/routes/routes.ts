@@ -3,7 +3,7 @@ const router = express.Router();
 import {
     getLogin,
     postLogin,
-    getHome,
+    getHome, getAdminpage, getAdminUser, getAdminPost,
     getRegister,
     getProfile,
     changeAVT,
@@ -11,7 +11,7 @@ import {
     getCategory, getCategoryTT, getCategoryQT, getCategoryTS, getCategoryTTiet,
     updatePost,
     postPage,
-    postCategory,
+    postCategory, postComment,
     toCategory,
     createRegister
 } from '../controller/controller';
@@ -35,6 +35,9 @@ router.get('/register', getRegister);
 router.post('/register', createRegister);
 router.post('/profile/changeAVT', upload.single('avatar'), changeAVT);
 router.get('/profile', getProfile);
+router.get('/admin', getAdminpage);
+router.get('/admin/user', getAdminUser);
+router.get('/admin/post', getAdminPost);
 
 router.post('/category/edit', editPost);
 router.post('/category/edit/updatePost', updatePost);
@@ -44,6 +47,7 @@ router.get('/category/thoisu', getCategoryTS)
 router.get('/category/thoitiet', getCategoryTTiet)
 router.get('/category', getCategory)
 router.get('/category/post/:id', toCategory);
+router.post('/category/post/', postComment);
 
 router.get('/pos', postPage);
 router.post('/post', postCategory);

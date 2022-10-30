@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://startbootstrap.github.io/startbootstrap-sb-admin/index.html -->
+<html lang="en" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>ADMIN PAGE</title>
+  <style type="text/css">
+    :host,
+    :root {
+      --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
+      --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Regular";
+      --fa-font-light: normal 300 1em/1 "Font Awesome 6 Light";
+      --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Thin";
+      --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+      --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands"
+    }
+
+    svg:not(:host).svg-inline--fa,
+    svg:not(:root).svg-inline--fa {
+      overflow: visible;
+      box-sizing: content-box
+    }
+
+    .svg-inline--fa {
+      display: var(--fa-display, inline-block);
+      height: 1em;
+      overflow: visible;
+      vertical-align: -.125em
+    }
+
+    .svg-inline--fa.fa-2xs {
+      vertical-align: .1em
+    }
+
+    .svg-inline--fa.fa-xs {
+      vertical-align: 0
+    }
+
+    .svg-inline--fa.fa-sm {
+      vertical-align: -.0714285705em
+    }
+
+    .svg-inline--fa.fa-lg {
+      vertical-align: -.2em
+    }
+
+    .svg-inline--fa.fa-xl {
+      vertical-align: -.25em
+    }
+
+    .svg-inline--fa.fa-2xl {
+      vertical-align: -.3125em
+    }
+
+    .svg-inline--fa.fa-pull-left {
+      margin-right: var(--fa-pull-margin, .3em);
+      width: auto
+    }
+
+    .svg-inline--fa.fa-pull-right {
+      margin-left: var(--fa-pull-margin, .3em);
+      width: auto
+    }
+
+    .svg-inline--fa.fa-li {
+      width: var(--fa-li-width, 2em);
+      top: .25em
+    }
+
+    .svg-inline--fa.fa-fw {
+      width: var(--fa-fw-width, 1.25em)
+    }
+
+    .fa-layers svg.svg-inline--fa {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0
+    }
+
+    .fa-layers-counter,
+    .fa-layers-text {
+      display: inline-block;
+      position: absolute;
+      text-align: center
+    }
+
+    .fa-layers {
+      display: inline-block;
+      height: 1em;
+      position: relative;
+      text-align: center;
+      vertical-align: -.125em;
+      width: 1em
+    }
+
+    .fa-layers svg.svg-inline--fa {
+      -webkit-transform-origin: center center;
+      transform-origin: center center
+    }
+
+    .fa-layers-text {
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      -webkit-transform-origin: center center;
+      transform-origin: center center
+    }
+
+    .fa-layers-counter {
+      background-color: var(--fa-counter-background-color, #ff253a);
+      border-radius: var(--fa-counter-border-radius, 1em);
+      box-sizing: border-box;
+      color: var(--fa-inverse, #fff);
+      line-height: var(--fa-counter-line-height, 1);
+      max-width: var(--fa-counter-max-width, 5em);
+      min-width: var(--fa-counter-min-width, 1.5em);
+      overflow: hidden;
+      padding: var(--fa-counter-padding, .25em .5em);
+      right: var(--fa-right, 0);
+      text-overflow: ellipsis;
+      top: var(--fa-top, 0);
+      -webkit-transform: scale(var(--fa-counter-scale, .25));
+      transform: scale(var(--fa-counter-scale, .25));
+      -webkit-transform-origin: top right;
+      transform-origin: top right
+    }
+
+    .fa-layers-bottom-right {
+      bottom: var(--fa-bottom, 0);
+      right: var(--fa-right, 0);
+      top: auto;
+      -webkit-transform: scale(var(--fa-layers-scale, .25));
+      transform: scale(var(--fa-layers-scale, .25));
+      -webkit-transform-origin: bottom right;
+      transform-origin: bottom right
+    }
+
+    .fa-layers-bottom-left {
+      bottom: var(--fa-bottom, 0);
+      left: var(--fa-left, 0);
+      right: auto;
+      top: auto;
+      -webkit-transform: scale(var(--fa-layers-scale, .25));
+      transform: scale(var(--fa-layers-scale, .25));
+      -webkit-transform-origin: bottom left;
+      transform-origin: bottom left
+    }
+
+    .fa-layers-top-right {
+      top: var(--fa-top, 0);
+      right: var(--fa-right, 0);
+      -webkit-transform: scale(var(--fa-layers-scale, .25));
+      transform: scale(var(--fa-layers-scale, .25));
+      -webkit-transform-origin: top right;
+      transform-origin: top right
+    }
+
+    .fa-layers-top-left {
+      left: var(--fa-left, 0);
+      right: auto;
+      top: var(--fa-top, 0);
+      -webkit-transform: scale(var(--fa-layers-scale, .25));
+      transform: scale(var(--fa-layers-scale, .25));
+      -webkit-transform-origin: top left;
+      transform-origin: top left
+    }
+
+    .fa-1x {
+      font-size: 1em
+    }
+
+    .fa-2x {
+      font-size: 2em
+    }
+
+    .fa-3x {
+      font-size: 3em
+    }
+
+    .fa-4x {
+      font-size: 4em
+    }
+
+    .fa-5x {
+      font-size: 5em
+    }
+
+    .fa-6x {
+      font-size: 6em
+    }
+
+    .fa-7x {
+      font-size: 7em
+    }
+
+    .fa-8x {
+      font-size: 8em
+    }
+
+    .fa-9x {
+      font-size: 9em
+    }
+
+    .fa-10x {
+      font-size: 10em
+    }
+
+    .fa-2xs {
+      font-size: .625em;
+      line-height: .1em;
+      vertical-align: .225em
+    }
+
+    .fa-xs {
+      font-size: .75em;
+      line-height: .0833333337em;
+      vertical-align: .125em
+    }
+
+    .fa-sm {
+      font-size: .875em;
+      line-height: .0714285718em;
+      vertical-align: .0535714295em
+    }
+
+    .fa-lg {
+      font-size: 1.25em;
+      line-height: .05em;
+      vertical-align: -.075em
+    }
+
+    .fa-xl {
+      font-size: 1.5em;
+      line-height: .0416666682em;
+      vertical-align: -.125em
+    }
+
+    .fa-2xl {
+      font-size: 2em;
+      line-height: .03125em;
+      vertical-align: -.1875em
+    }
+
+    .fa-fw {
+      text-align: center;
+      width: 1.25em
+    }
+
+    .fa-ul {
+      list-style-type: none;
+      margin-left: var(--fa-li-margin, 2.5em);
+      padding-left: 0
+    }
+
+    .fa-ul>li {
+      position: relative
+    }
+
+    .fa-li {
+      left: calc(var(--fa-li-width, 2em) * -1);
+      position: absolute;
+      text-align: center;
+      width: var(--fa-li-width, 2em);
+      line-height: inherit
+    }
+
+    .fa-border {
+      border-color: var(--fa-border-color, #eee);
+      border-radius: var(--fa-border-radius, .1em);
+      border-style: var(--fa-border-style, solid);
+      border-width: var(--fa-border-width, .08em);
+      padding: var(--fa-border-padding, .2em .25em .15em)
+    }
+
+    .fa-pull-left {
+      float: left;
+      margin-right: var(--fa-pull-margin, .3em)
+    }
+
+    .fa-pull-right {
+      float: right;
+      margin-left: var(--fa-pull-margin, .3em)
+    }
+
+    .fa-beat {
+      -webkit-animation-name: fa-beat;
+      animation-name: fa-beat;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      animation-timing-function: var(--fa-animation-timing, ease-in-out)
+    }
+
+    .fa-bounce {
+      -webkit-animation-name: fa-bounce;
+      animation-name: fa-bounce;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(.28, .84, .42, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(.28, .84, .42, 1))
+    }
+
+    .fa-fade {
+      -webkit-animation-name: fa-fade;
+      animation-name: fa-fade;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(.4, 0, .6, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(.4, 0, .6, 1))
+    }
+
+    .fa-beat-fade {
+      -webkit-animation-name: fa-beat-fade;
+      animation-name: fa-beat-fade;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(.4, 0, .6, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(.4, 0, .6, 1))
+    }
+
+    .fa-flip {
+      -webkit-animation-name: fa-flip;
+      animation-name: fa-flip;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      animation-timing-function: var(--fa-animation-timing, ease-in-out)
+    }
+
+    .fa-shake {
+      -webkit-animation-name: fa-shake;
+      animation-name: fa-shake;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+      animation-timing-function: var(--fa-animation-timing, linear)
+    }
+
+    .fa-spin {
+      -webkit-animation-name: fa-spin;
+      animation-name: fa-spin;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 2s);
+      animation-duration: var(--fa-animation-duration, 2s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+      animation-timing-function: var(--fa-animation-timing, linear)
+    }
+
+    .fa-spin-reverse {
+      --fa-animation-direction: reverse
+    }
+
+    .fa-pulse,
+    .fa-spin-pulse {
+      -webkit-animation-name: fa-spin;
+      animation-name: fa-spin;
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
+      animation-timing-function: var(--fa-animation-timing, steps(8))
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      .fa-beat,
+      .fa-beat-fade,
+      .fa-bounce,
+      .fa-fade,
+      .fa-flip,
+      .fa-pulse,
+      .fa-shake,
+      .fa-spin,
+      .fa-spin-pulse {
+        -webkit-animation-delay: -1ms;
+        animation-delay: -1ms;
+        -webkit-animation-duration: 1ms;
+        animation-duration: 1ms;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        transition-delay: 0s;
+        transition-duration: 0s
+      }
+    }
+
+    @-webkit-keyframes fa-beat {
+
+      0%,
+      90% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+      }
+
+      45% {
+        -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+        transform: scale(var(--fa-beat-scale, 1.25))
+      }
+    }
+
+    @keyframes fa-beat {
+
+      0%,
+      90% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+      }
+
+      45% {
+        -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+        transform: scale(var(--fa-beat-scale, 1.25))
+      }
+    }
+
+    @-webkit-keyframes fa-bounce {
+      0% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+
+      10% {
+        -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, .9)) translateY(0);
+        transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, .9)) translateY(0)
+      }
+
+      30% {
+        -webkit-transform: scale(var(--fa-bounce-jump-scale-x, .9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -.5em));
+        transform: scale(var(--fa-bounce-jump-scale-x, .9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -.5em))
+      }
+
+      50% {
+        -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, .95)) translateY(0);
+        transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, .95)) translateY(0)
+      }
+
+      57% {
+        -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -.125em));
+        transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -.125em))
+      }
+
+      64% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+
+      100% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+    }
+
+    @keyframes fa-bounce {
+      0% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+
+      10% {
+        -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, .9)) translateY(0);
+        transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, .9)) translateY(0)
+      }
+
+      30% {
+        -webkit-transform: scale(var(--fa-bounce-jump-scale-x, .9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -.5em));
+        transform: scale(var(--fa-bounce-jump-scale-x, .9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -.5em))
+      }
+
+      50% {
+        -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, .95)) translateY(0);
+        transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, .95)) translateY(0)
+      }
+
+      57% {
+        -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -.125em));
+        transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -.125em))
+      }
+
+      64% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+
+      100% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0)
+      }
+    }
+
+    @-webkit-keyframes fa-fade {
+      50% {
+        opacity: var(--fa-fade-opacity, .4)
+      }
+    }
+
+    @keyframes fa-fade {
+      50% {
+        opacity: var(--fa-fade-opacity, .4)
+      }
+    }
+
+    @-webkit-keyframes fa-beat-fade {
+
+      0%,
+      100% {
+        opacity: var(--fa-beat-fade-opacity, .4);
+        -webkit-transform: scale(1);
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+        transform: scale(var(--fa-beat-fade-scale, 1.125))
+      }
+    }
+
+    @keyframes fa-beat-fade {
+
+      0%,
+      100% {
+        opacity: var(--fa-beat-fade-opacity, .4);
+        -webkit-transform: scale(1);
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+        transform: scale(var(--fa-beat-fade-scale, 1.125))
+      }
+    }
+
+    @-webkit-keyframes fa-flip {
+      50% {
+        -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+        transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg))
+      }
+    }
+
+    @keyframes fa-flip {
+      50% {
+        -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+        transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg))
+      }
+    }
+
+    @-webkit-keyframes fa-shake {
+      0% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg)
+      }
+
+      4% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg)
+      }
+
+      24%,
+      8% {
+        -webkit-transform: rotate(-18deg);
+        transform: rotate(-18deg)
+      }
+
+      12%,
+      28% {
+        -webkit-transform: rotate(18deg);
+        transform: rotate(18deg)
+      }
+
+      16% {
+        -webkit-transform: rotate(-22deg);
+        transform: rotate(-22deg)
+      }
+
+      20% {
+        -webkit-transform: rotate(22deg);
+        transform: rotate(22deg)
+      }
+
+      32% {
+        -webkit-transform: rotate(-12deg);
+        transform: rotate(-12deg)
+      }
+
+      36% {
+        -webkit-transform: rotate(12deg);
+        transform: rotate(12deg)
+      }
+
+      100%,
+      40% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+    }
+
+    @keyframes fa-shake {
+      0% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg)
+      }
+
+      4% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg)
+      }
+
+      24%,
+      8% {
+        -webkit-transform: rotate(-18deg);
+        transform: rotate(-18deg)
+      }
+
+      12%,
+      28% {
+        -webkit-transform: rotate(18deg);
+        transform: rotate(18deg)
+      }
+
+      16% {
+        -webkit-transform: rotate(-22deg);
+        transform: rotate(-22deg)
+      }
+
+      20% {
+        -webkit-transform: rotate(22deg);
+        transform: rotate(22deg)
+      }
+
+      32% {
+        -webkit-transform: rotate(-12deg);
+        transform: rotate(-12deg)
+      }
+
+      36% {
+        -webkit-transform: rotate(12deg);
+        transform: rotate(12deg)
+      }
+
+      100%,
+      40% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+    }
+
+    @-webkit-keyframes fa-spin {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes fa-spin {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    .fa-rotate-90 {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg)
+    }
+
+    .fa-rotate-180 {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg)
+    }
+
+    .fa-rotate-270 {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg)
+    }
+
+    .fa-flip-horizontal {
+      -webkit-transform: scale(-1, 1);
+      transform: scale(-1, 1)
+    }
+
+    .fa-flip-vertical {
+      -webkit-transform: scale(1, -1);
+      transform: scale(1, -1)
+    }
+
+    .fa-flip-both,
+    .fa-flip-horizontal.fa-flip-vertical {
+      -webkit-transform: scale(-1, -1);
+      transform: scale(-1, -1)
+    }
+
+    .fa-rotate-by {
+      -webkit-transform: rotate(var(--fa-rotate-angle, none));
+      transform: rotate(var(--fa-rotate-angle, none))
+    }
+
+    .fa-stack {
+      display: inline-block;
+      vertical-align: middle;
+      height: 2em;
+      position: relative;
+      width: 2.5em
+    }
+
+    .fa-stack-1x,
+    .fa-stack-2x {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: var(--fa-stack-z-index, auto)
+    }
+
+    .svg-inline--fa.fa-stack-1x {
+      height: 1em;
+      width: 1.25em
+    }
+
+    .svg-inline--fa.fa-stack-2x {
+      height: 2em;
+      width: 2.5em
+    }
+
+    .fa-inverse {
+      color: var(--fa-inverse, #fff)
+    }
+
+    .fa-sr-only,
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0
+    }
+
+    .fa-sr-only-focusable:not(:focus),
+    .sr-only-focusable:not(:focus) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0
+    }
+
+    .svg-inline--fa .fa-primary {
+      fill: var(--fa-primary-color, currentColor);
+      opacity: var(--fa-primary-opacity, 1)
+    }
+
+    .svg-inline--fa .fa-secondary {
+      fill: var(--fa-secondary-color, currentColor);
+      opacity: var(--fa-secondary-opacity, .4)
+    }
+
+    .svg-inline--fa.fa-swap-opacity .fa-primary {
+      opacity: var(--fa-secondary-opacity, .4)
+    }
+
+    .svg-inline--fa.fa-swap-opacity .fa-secondary {
+      opacity: var(--fa-primary-opacity, 1)
+    }
+
+    .svg-inline--fa mask .fa-primary,
+    .svg-inline--fa mask .fa-secondary {
+      fill: #000
+    }
+
+    .fa-duotone.fa-inverse,
+    .fad.fa-inverse {
+      color: var(--fa-inverse, #fff)
+    }
+  </style>
+  <link href="../../assets/index_files/style.css" rel="stylesheet">
+  <link href="../../assets/index_files/styles.css" rel="stylesheet">
+  <script src="../../assets/index_files/all.js" crossorigin="anonymous"></script>
+  <style type="text/css">
+    /* Chart.js */
+    @keyframes chartjs-render-animation {
+      from {
+        opacity: .99
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .chartjs-render-monitor {
+      animation: chartjs-render-animation 1ms
+    }
+
+    .chartjs-size-monitor,
+    .chartjs-size-monitor-expand,
+    .chartjs-size-monitor-shrink {
+      position: absolute;
+      direction: ltr;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+      visibility: hidden;
+      z-index: -1
+    }
+
+    .chartjs-size-monitor-expand>div {
+      position: absolute;
+      width: 1000000px;
+      height: 1000000px;
+      left: 0;
+      top: 0
+    }
+
+    .chartjs-size-monitor-shrink>div {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      left: 0;
+      top: 0
+    }
+  </style>
+  <style>
+    .--savior-overlay-transform-reset {
+      transform: none !important;
+    }
+
+    .--savior-overlay-z-index-top {
+      z-index: 2147483643 !important;
+    }
+
+    .--savior-overlay-position-relative {
+      position: relative;
+    }
+
+    .--savior-overlay-overflow-x-visible {
+      overflow-x: visible !important;
+    }
+
+    .--savior-overlay-overflow-y-visible {
+      overflow-y: visible !important;
+    }
+
+    .--savior-overlay-z-index-reset {
+      z-index: auto !important;
+    }
+
+    .--savior-overlay-display-none {
+      display: none !important;
+    }
+
+    .--savior-overlay-clearfix {
+      clear: both;
+    }
+
+    .--savior-overlay-reset-filter {
+      filter: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .--savior-tooltip-host {
+      z-index: 9999;
+      position: absolute;
+      top: 0;
+    }
+
+    /*Override css styles for Twitch.tv*/
+    main.--savior-overlay-z-index-reset {
+      z-index: auto !important;
+    }
+
+    main.--savior-overlay-z-index-top {
+      z-index: auto !important;
+    }
+
+    main.--savior-overlay-z-index-top .channel-root__player-container+div,
+    main.--savior-overlay-z-index-top .video-player-hosting-ui__container+div {
+      opacity: 0.1;
+    }
+
+    /*Dirty hack for facebook big video page e.g: https://www.facebook.com/abc/videos/...*/
+    .--savior-backdrop {
+      position: fixed !important;
+      z-index: 2147483642 !important;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .--savior-overlay-twitter-video-player {
+      position: fixed;
+      width: 80%;
+      height: 80%;
+      top: 10%;
+      left: 10%;
+    }
+
+    /* Fix conflict css with zingmp3 */
+    .zm-video-modal.--savior-overlay-z-index-reset {
+      position: absolute;
+    }
+
+    /* Dirty hack for xvideos99 */
+    #page #main.--savior-overlay-z-index-reset {
+      z-index: auto !important;
+    }
+
+    /* Overlay for ok.ru */
+    #vp_w.--savior-overlay-z-index-reset.media-layer.media-layer__video {
+      position: absolute;
+      overflow-y: hidden;
+    }
+
+    /* Fix missing controller for tv.naver.com */
+    .--savior-overlay-z-index-top.rmc_controller,
+    .--savior-overlay-z-index-top.rmc_setting_intro,
+    .--savior-overlay-z-index-top.rmc_highlight,
+    .--savior-overlay-z-index-top.rmc_control_settings {
+      z-index: 2147483644 !important;
+    }
+
+    /* Dirty hack for douyi.com */
+    .swiper-wrapper.--savior-overlay-z-index-reset .swiper-slide:not(.swiper-slide-active),
+    .swiper-wrapper.--savior-overlay-transform-reset .swiper-slide:not(.swiper-slide-active) {
+      display: none;
+    }
+
+    .videoWrap+div>div {
+      pointer-events: unset;
+    }
+
+    /* Dirty hack for fpt.ai */
+    .mfp-wrap.--savior-overlay-z-index-top {
+      position: relative;
+    }
+
+    .mfp-wrap.--savior-overlay-z-index-top .mfp-close {
+      display: none;
+    }
+
+    .mfp-wrap.--savior-overlay-z-index-top .mfp-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset+nav {
+      z-index: -1 !important;
+    }
+
+    section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset section.--savior-overlay-z-index-reset div.--savior-overlay-z-index-reset~div {
+      position: relative;
+    }
+
+    @-moz-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-o-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="/"><img src="../../assets/images/logo.png" alt=""></a></a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg
+        class="svg-inline--fa fa-bars" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+        role="img" xmlns="" viewBox="0 0 448 512" data-fa-i2svg="">
+        <path fill="currentColor"
+          d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z">
+        </path>
+      </svg><!-- <i class="fas fa-bars"></i> Font Awesome fontawesome.com --></button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false"><svg class="svg-inline--fa fa-user fa-fw" aria-hidden="true" focusable="false"
+            data-prefix="fas" data-icon="user" role="img" xmlns="" viewBox="0 0 448 512" data-fa-i2svg="">
+            <path fill="currentColor"
+              d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z">
+            </path>
+          </svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Activity Log</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <div class="sb-sidenav-menu-heading"></div>
+            <a class="nav-link" href="/admin">
+              <div class="sb-nav-link-icon"><svg class="svg-inline--fa fa-gauge-high" aria-hidden="true"
+                  focusable="false" data-prefix="fas" data-icon="gauge-high" role="img" xmlns="" viewBox="0 0 512 512"
+                  data-fa-i2svg="">
+                  <path fill="currentColor"
+                    d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 64C238.3 64 224 78.33 224 96C224 113.7 238.3 128 256 128C273.7 128 288 113.7 288 96C288 78.33 273.7 64 256 64zM256 416C291.3 416 320 387.3 320 352C320 334.6 313.1 318.9 301.9 307.4L365.1 161.7C371.3 149.5 365.8 135.4 353.7 130C341.5 124.7 327.4 130.2 322 142.3L257.9 288C257.3 288 256.6 287.1 256 287.1C220.7 287.1 192 316.7 192 352C192 387.3 220.7 416 256 416V416zM144 112C126.3 112 112 126.3 112 144C112 161.7 126.3 176 144 176C161.7 176 176 161.7 176 144C176 126.3 161.7 112 144 112zM96 288C113.7 288 128 273.7 128 256C128 238.3 113.7 224 96 224C78.33 224 64 238.3 64 256C64 273.7 78.33 288 96 288zM416 224C398.3 224 384 238.3 384 256C384 273.7 398.3 288 416 288C433.7 288 448 273.7 448 256C448 238.3 433.7 224 416 224z">
+                  </path>
+                </svg><!-- <i class="fas fa-tachometer-alt"></i> Font Awesome fontawesome.com -->
+              </div>
+              Dashboard
+            </a>
+            <div class="sb-sidenav-menu-heading">DATABASE</div>
+            <a class="nav-link" href="/admin/user">
+              <div class="sb-nav-link-icon"><svg class="svg-inline--fa fa-table" aria-hidden="true" focusable="false"
+                  data-prefix="fas" data-icon="table" role="img" xmlns="" viewBox="0 0 512 512" data-fa-i2svg="">
+                  <path fill="currentColor"
+                    d="M448 32C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM224 256V160H64V256H224zM64 320V416H224V320H64zM288 416H448V320H288V416zM448 256V160H288V256H448z">
+                  </path>
+                </svg><!-- <i class="fas fa-table"></i> Font Awesome fontawesome.com -->
+              </div>
+              Users
+            </a>
+            <a class="nav-link" href="/admin/post">
+              <div class="sb-nav-link-icon"><svg class="svg-inline--fa fa-table" aria-hidden="true" focusable="false"
+                  data-prefix="fas" data-icon="table" role="img" xmlns="" viewBox="0 0 512 512" data-fa-i2svg="">
+                  <path fill="currentColor"
+                    d="M448 32C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM224 256V160H64V256H224zM64 320V416H224V320H64zM288 416H448V320H288V416zM448 256V160H288V256H448z">
+                  </path>
+                </svg><!-- <i class="fas fa-table"></i> Font Awesome fontawesome.com -->
+              </div>
+              Posts
+            </a>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main>
+
+      </main>
+
+    </div>
+  </div>
+  <script src="../../assets/index_files/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="../../assets/index_files/scripts.js"></script>
+  <script src="../../assets/index_files/Chart.min.js" crossorigin="anonymous"></script>
+  <script src="../../assets/index_files/chart-area-demo.js"></script>
+  <script src="../../assets/index_files/chart-bar-demo.js"></script>
+  <script src="../../assets/index_files/simple-datatables@latest" crossorigin="anonymous"></script>
+  <script src="../../assets/index_files/datatables-simple-demo.js"></script>
+
+
+</body>
+<div style="position: absolute; top: 0px; display: block !important;"></div>
+
+</html>
