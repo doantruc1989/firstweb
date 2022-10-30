@@ -1,0 +1,41 @@
+<br>
+<div class="row aos-init aos-animate" data-aos="fade-up">
+    <div class="col-lg-3 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h2>PANEL</h2>
+                <ul class="vertical-menu" style="list-style: none;">
+                    <form action="/admin/user" method="get">
+                        <li><a href="http://127.0.0.1:3000/admin/user" style="color: black;">QUẢN LÝ THÀNH VIÊN</a></li>
+                    </form>
+                    <form action="/admin/post" method="get">
+                        <li><a href="http://127.0.0.1:3000/admin/post" style="color: black;">QUẢN LÝ CHUYÊN MỤC</a></li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9 stretch-card grid-margin">
+        <table style="width:90%">
+            <tr style="border-bottom:1px solid black;">
+                <th>ID</th>
+                <th>TITLE</th>
+
+                <th>CONTENTFULL</th>
+            </tr>
+            <form action="/admin/user" method="post">{{#each post}}
+                <tr style="border-bottom:1px solid black;">
+                    <td>{{id}}</td>
+                    <td>{{title}}</td>
+
+                    <td>{{contentFull}}</td>
+                    <td style="display: flex; justify-content: right;"><button type="submit" value="{{id}}"
+                            style="border-radius: 6px; margin-right: 10px">edit</button><button type="submit"
+                            value="{{id}}" style="border-radius: 6px; margin-right: 10px">del</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </form>
+        </table>
+    </div>
+</div>

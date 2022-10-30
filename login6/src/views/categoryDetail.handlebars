@@ -38,3 +38,37 @@
         <p>{{post.[0].time}}</p>
     </div>
 </div>
+
+<hr>
+<div class="container">
+    <h2>Ý kiến của bạn: </h2>
+    <div class="row">
+        <div class="col-12">
+            <form action="/category/post/" method="post">
+                <textarea placeholder="Ý kiến của bạn" value="commentContent" name="commentContent"
+                    style="height: 90px; width: 100%;"></textarea><br>
+                <div style="float: right;">
+                    <button type="submit" value="{{post.[0].id}}" name="commentbtn"
+                        style="border-radius: 5px; padding: 5px 20px 5px 20px; margin: 0 5px 0 5px">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>TOP COMMENT:</h2>
+    {{#each comment}}
+    <div style="width: 90%; text-align:justify">
+        <div class="row">
+            <div class="col-2" style="text-align: right;">
+                <strong>{{username}}<span>:</span> </strong>
+            </div>
+            <div class="col-10">
+                {{content}}
+            </div>
+        </div><br>
+        <p style="text-align: right;">{{time}}</p>
+    </div>
+    <hr>{{/each}}
+</div>
