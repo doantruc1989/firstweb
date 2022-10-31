@@ -28,6 +28,9 @@ export class post {
     })
     "time": string
 
+    @Column()
+    "count": string
+
     @ManyToOne(() => category, (category) => category.posts)
     "categories": category[]
 };

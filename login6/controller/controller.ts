@@ -18,7 +18,9 @@ myDataSource
     console.error("Error during Data Source initialization:", err);
   });
 
-export function getLogin(req: Request, res: Response, next: NextFunction) {
+
+export async function getLogin(req: Request, res: Response, next: NextFunction) {
+
   var options = {
     root: path.join(__dirname),
   };
@@ -34,6 +36,7 @@ export async function postLogin(
   const username = req.body.username,
     password = req.body.password,
     rememberMe = req.body.rememberMe;
+
 
   const data = await myDataSource.getRepository("users").find({
     where: { username: username },
@@ -55,22 +58,22 @@ export async function postLogin(
 }
 
 export async function getAdminpage(req: Request, res: Response, next: NextFunction) {
-const data = await myDataSource.getRepository("users").find({
-  where: { username: req.cookies.username },
-});
-if (data[0] == undefined) {
-  res.render("post2");
-} else {
-  if (data[0].role == "admin") {
-    var options = {
-      root: path.join(__dirname),
-    };
-    var fileName = "/html/admin.html";
-    res.sendFile(fileName, options);
+  const data = await myDataSource.getRepository("users").find({
+    where: { username: req.cookies.username },
+  });
+  if (data[0] == undefined) {
+    res.render("post2");
   } else {
-    res.render("post2")
+    if (data[0].role == "admin") {
+      var options = {
+        root: path.join(__dirname),
+      };
+      var fileName = "/html/admin.html";
+      res.sendFile(fileName, options);
+    } else {
+      res.render("post2")
+    }
   }
-}
 }
 
 export async function getAdminUser(req: Request, res: Response, next: NextFunction) {
@@ -160,6 +163,7 @@ export async function getCategory(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const page = parseInt(req.query.page as any) || 1;
   const perPage = 5;
   const total = await myDataSource
@@ -172,7 +176,7 @@ export async function getCategory(
     .take(perPage)
     .skip((page - 1) * perPage)
     .getMany();
-  res.render("category", { post: user });
+  res.render("category", { post: user, header });
 }
 
 export function postPage(req: Request, res: Response, next: NextFunction) {
@@ -210,6 +214,7 @@ export async function getCategoryTT(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const data = await myDataSource
     .getRepository(category)
     .createQueryBuilder("category")
@@ -218,7 +223,7 @@ export async function getCategoryTT(
     .getMany();
   let result = data[0];
   res.render("categorybytag", {
-    result: result,
+    result: result, header
   });
 }
 
@@ -227,6 +232,7 @@ export async function getCategoryQT(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const data = await myDataSource
     .getRepository(category)
     .createQueryBuilder("category")
@@ -235,7 +241,7 @@ export async function getCategoryQT(
     .getMany();
   let result = data[0];
   res.render("categorybytag", {
-    result: result,
+    result: result, header
   });
 }
 
@@ -244,6 +250,7 @@ export async function getCategoryTS(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const data = await myDataSource
     .getRepository(category)
     .createQueryBuilder("category")
@@ -252,7 +259,7 @@ export async function getCategoryTS(
     .getMany();
   let result = data[0];
   res.render("categorybytag", {
-    result: result,
+    result: result, header
   });
 }
 
@@ -261,6 +268,7 @@ export async function getCategoryTTiet(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const data = await myDataSource
     .getRepository(category)
     .createQueryBuilder("category")
@@ -269,7 +277,7 @@ export async function getCategoryTTiet(
     .getMany();
   let result = data[0];
   res.render("categorybytag", {
-    result: result,
+    result: result, header
   });
 }
 
@@ -278,6 +286,7 @@ export async function toCategory(
   res: Response,
   next: NextFunction
 ) {
+  const header = await myDataSource.getRepository(category).find()
   const post = await myDataSource.getRepository("post").find({
     where: { id: req.params.id },
   });
@@ -285,7 +294,7 @@ export async function toCategory(
     where: { postId: req.params.id },
   });
   res.render("categoryDetail", {
-    post, comment
+    post, comment, header
   });
 }
 
@@ -304,10 +313,10 @@ export async function postComment(
     where: { id: req.body.commentbtn }
   })
   const post = await myDataSource.getRepository("post").find({
-    where: { id: req.body.commentbtn }});
-    res.render("categoryDetail", {
-      post, comment
-    });
+    where: { id: req.body.commentbtn }
+  });
+  let x = '/category/post/' + req.body.commentbtn;
+  res.redirect(x)
 }
 
 export async function getHome(req: Request, res: Response, next: NextFunction) {
